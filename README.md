@@ -4,8 +4,8 @@
 XGBoost, CatBoost), a linear model (BayesianRidge), two light LGBM
 stacking estimators on top of the gradient boosting models (with and
 without BayesianRidge, respectively), Pytorch Tabular with GANDALF
-network, TabICL, and TabPFN. For Pytorch Tabular and all three gradient
-boosting models, parameter were tuned using Optuna; BayesianRidge, the
+backend, TabICL, and TabPFN. For Pytorch Tabular and all three gradient
+boosting models, parameters were tuned using Optuna; BayesianRidge, the
 stacking estimators, TabICL and TabPFN were used with the stock
 parameters. Base models were run independently, and their predictions
 were aggregated using NNLS.
@@ -20,14 +20,16 @@ fine-tuning on the single concentration data alone.
 
 **Data**. Only the data provided by the PXR challenge were used.
 Augmenting those data with ChEMBL chemicals was found to actually
-degrade the ML performance. M:L training and inference on Analog set 2
+degrade the ML performance. ML training and inference on Analog set 2
 was performed using splitting the set into multiple parts and focusing
-the training set for each part independently, as described in \[1\]. I
-will provide more details, along with the code, if my submission scores
-high enough. No proprietary data were used.
+the training set for each part independently, as described in \[1\].
 
 # Performance comments
 
 **ML models**. The two stacking estimators consistently got negligible
 NNLS weights. The weights for the other ML models varied but stayed
 comparable to one another.
+
+# References
+
+1. https://arxiv.org/abs/2602.23303 .
